@@ -20,7 +20,6 @@ public interface APIService {
     Call<CreateItemResponse> createItem(
             @Field("categoryId") int categoryId,
             @Field("name") String name,
-            @Field("imagePath") String imagePath,
             @Field("price") int price);
     @FormUrlEncoded
     @POST("api.php?apicall=categorycreate")
@@ -32,4 +31,16 @@ public interface APIService {
             @Field("itemId") int itemId,
             @Field("quantity") int quantity,
             @Field("totalPrice") int totalPrice);
+    @FormUrlEncoded
+    @POST("api.php?apicall=itemupdate")
+    Call<UpdateItemResponse> updateItem(
+            @Field("itemId") int itemId,
+            @Field("name") String name,
+            @Field("price") int price
+    );
+    @FormUrlEncoded
+    @POST("api.php?apicall=itemdelete")
+    Call<DeleteItemResponse> deleteItem(
+            @Field("itemId") int itemId
+    );
 }

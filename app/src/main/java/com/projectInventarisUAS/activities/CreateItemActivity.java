@@ -111,7 +111,7 @@
             String harga = editTextHarga.getText().toString().trim();
             int categoryId = ((Categories) spinner.getSelectedItem()).getCategoryId();
 
-            Call<CreateItemResponse> call = apiService.createItem(categoryId, nama, "path/test", Integer.parseInt(harga));
+            Call<CreateItemResponse> call = apiService.createItem(categoryId, nama, Integer.parseInt(harga));
             call.enqueue(new Callback<CreateItemResponse>() {
                 @Override
                 public void onResponse(Call<CreateItemResponse> call, Response<CreateItemResponse> response) {

@@ -36,6 +36,7 @@
         <activity android:name="com.projectInventarisUAS.activities.CreateItemActivity" />
         <activity android:name="com.projectInventarisUAS.activities.CreateCategoryActivity" />
         <activity android:name="com.projectInventarisUAS.activities.CreateTransactionActivity" />
+        <activity android:name="com.projectInventarisUAS.activities.EditItemActivity" />
 
 
     </application>

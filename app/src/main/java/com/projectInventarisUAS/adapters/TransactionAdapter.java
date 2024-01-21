@@ -39,19 +39,29 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView itemNameTextView;
-        private TextView itemPriceTextView;
+        private TextView transactionIDTextView;
+        private TextView itemIDTextView;
+        private TextView quantityTextView;
+        private TextView totalPriceTextView;
+        private TextView timestampTextView;
 
         ViewHolder(@NonNull View transactionView) {
             super(transactionView);
-            itemNameTextView = transactionView.findViewById(R.id.textView3);
-            itemPriceTextView = transactionView.findViewById(R.id.textView4);
+            transactionIDTextView = transactionView.findViewById(R.id.textViewTransactionID);
+            itemIDTextView = transactionView.findViewById(R.id.textViewItemID);
+            quantityTextView = transactionView.findViewById(R.id.textViewQuantity);
+            totalPriceTextView = transactionView.findViewById(R.id.textViewTotalPrice);
+            timestampTextView = transactionView.findViewById(R.id.textViewTimestamp);
+
         }
 
         void bind(Transaction transaction) {
             // Bind data to views
-            itemNameTextView.setText("Quantity " +String.valueOf(transaction.getQuantity()));
-            itemPriceTextView.setText("TotalPrice : " + String.valueOf(transaction.getTotalPrice()));
+            transactionIDTextView.setText("TransactionID: " + String.valueOf(transaction.getTransactionId()));
+            itemIDTextView.setText("ItemID: "+ String.valueOf(transaction.getItemId()));
+            quantityTextView.setText("Quantity: " + String.valueOf(transaction.getQuantity())+ " Item");
+            totalPriceTextView.setText("Total Price: Rp " + String.valueOf(transaction.getTotalPrice()));
+            timestampTextView.setText("History: " +transaction.getTimestamp());
         }
     }
     }

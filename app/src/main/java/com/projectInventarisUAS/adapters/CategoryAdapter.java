@@ -47,8 +47,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoriesIdTextView = itemView.findViewById(R.id.textView3);
-            categoriesNameTextView = itemView.findViewById(R.id.textView4);
+            categoriesIdTextView = itemView.findViewById(R.id.textViewCategoryID);
+            categoriesNameTextView = itemView.findViewById(R.id.textViewCategoryName);
         }
 
         void bind(Categories categories) {

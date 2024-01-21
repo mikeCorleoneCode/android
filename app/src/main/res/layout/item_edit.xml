@@ -7,22 +7,22 @@
 
 
     <TextView
-        android:id="@+id/textViewCategoryID"
+        android:id="@+id/textViewItemID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="16dp"
-        android:text="Kategori"
+        android:layout_marginStart="4dp"
+        android:text="Item ID"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@id/textInputID"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:hint="Item ID"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCategoryID" />
-
+        app:layout_constraintTop_toTopOf="@id/textViewItemID" />
     <TextView
         android:id="@+id/textViewNama"
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         android:layout_marginTop="16dp"
         android:text="Nama"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputID" />
 
 
     <com.google.android.material.textfield.TextInputEditText

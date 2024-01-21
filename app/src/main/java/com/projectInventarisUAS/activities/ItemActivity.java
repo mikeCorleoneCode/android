@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ItemActivity extends AppCompatActivity {
+public class ItemActivity extends AppCompatActivity implements ItemAdapter.OnItemClickListener {
     private static final String TAG = ItemActivity.class.getSimpleName();
     private RecyclerView recyclerView;
     private ItemAdapter itemAdapter;
@@ -40,7 +40,7 @@ public class ItemActivity extends AppCompatActivity {
         APIService apiService = RetrofitInstance.getRetrofitInstance().create(APIService.class);
 
         Call<ItemResponse> call = apiService.getListItem();
-
+        ItemAdapter.OnItemClickListener itemClickListener = this;
         call.enqueue(new Callback<ItemResponse>() {
             @Override
             public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
@@ -49,7 +49,7 @@ public class ItemActivity extends AppCompatActivity {
                     if(itemResponse != null && itemResponse.isSuccess()) {
                         List<Item> itemList = itemResponse.getData();
                         handleSuccessResponse(itemList);
-                        itemAdapter = new ItemAdapter(itemList);
+                        itemAdapter = new ItemAdapter(itemList, itemClickListener);
                         recyclerView.setAdapter(itemAdapter);
                     }else{
                         handleErrorResponse(response.code());
@@ -64,6 +64,13 @@ public class ItemActivity extends AppCompatActivity {
                 handleNetworkFailure(t);
             }
         });
+    }
+    @Override
+    public void onItemClick(Item item) {
+        // Handle item click, for example, open an edit/update activity
+        Intent intent = new Intent(this, EditItemActivity.class);
+        intent.putExtra("item", item); // Pass the item ID to the edit activity if needed
+        startActivity(intent);
     }
     private void openCreateItemActivity(){
         Intent intent = new Intent(this, CreateItemActivity.class);
